@@ -28,3 +28,20 @@
 main {
     margin-bottom: 100px;
 }
+
+.hover-lift {
+    transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+.card {
+    background: rgba(33, 37, 41, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.btn-primary {
+    padding: 0.8rem 1.5rem;
+}

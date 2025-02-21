@@ -16,18 +16,14 @@
                     Upload a knee X-ray image for automatic osteoporosis screening.
                 </div>
 
-                <div class="upload-container text-center p-4 mb-4">
-                    <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" 
-                         alt="Upload icon" class="upload-icon mb-3" width="64" height="64">
-                    <form id="uploadForm" class="mb-3">
-                        <input type="file" id="fileInput" class="form-control" accept=".jpg,.jpeg,.png" hidden>
-                        <button type="button" id="uploadButton" class="btn btn-primary btn-lg">
-                            <i data-feather="upload" class="me-2"></i>
-                            Choose X-Ray Image
-                        </button>
-                        <div id="fileInfo" class="mt-2 text-muted"></div>
-                    </form>
-                </div>
+                <form id="uploadForm" class="mb-3 text-center">
+                    <input type="file" id="fileInput" class="form-control" accept=".jpg,.jpeg,.png" hidden>
+                    <button type="button" id="uploadButton" class="btn btn-primary btn-lg">
+                        <i data-feather="upload" class="me-2"></i>
+                        Choose X-Ray Image
+                    </button>
+                    <div id="fileInfo" class="mt-2 text-muted"></div>
+                </form>
 
                 <div id="loadingIndicator" class="text-center d-none">
                     <div class="spinner-border text-primary" role="status">

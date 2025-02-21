@@ -37,6 +37,10 @@
                         <div id="resultStatus" class="mb-3"></div>
                         <div id="resultConfidence" class="mb-3"></div>
                         <div id="resultRecommendation" class="mb-3"></div>
+                        <div id="uploadedImageContainer" class="mt-3">
+                            <h4 class="mb-2">Uploaded Image:</h4>
+                            <img id="uploadedImage" src="" alt="Uploaded X-Ray" class="img-fluid rounded-3" />
+                        </div>
                     </div>
                 </div>
 
@@ -49,4 +53,22 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+<script>
+    // Assuming you have a function to handle file input and display the image
+    document.getElementById('uploadButton').addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('uploadedImage').src = e.target.result;
+                document.getElementById('uploadedImageContainer').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 {% endblock %}

@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Model upload elements
-    const modelUploadForm = document.getElementById('modelUploadForm');
-    const modelInput = document.getElementById('modelInput');
-    const modelUploadButton = document.getElementById('modelUploadButton');
-
     // X-ray upload elements
     const uploadForm = document.getElementById('uploadForm');
     const fileInput = document.getElementById('fileInput');
@@ -16,63 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultConfidence = document.getElementById('resultConfidence');
     const resultRecommendation = document.getElementById('resultRecommendation');
 
-    // Model upload handling
-    if (modelUploadButton) {
-        modelUploadButton.addEventListener('click', () => modelInput.click());
-
-        modelInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                uploadModel(file);
-            }
-        });
-    }
-
     // X-ray upload handling
-    if (uploadButton) {
-        uploadButton.addEventListener('click', () => fileInput.click());
+    uploadButton.addEventListener('click', () => fileInput.click());
 
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const fileSize = (file.size / 1024 / 1024).toFixed(2);
-                fileInfo.textContent = `Selected file: ${file.name} (${fileSize}MB)`;
-                uploadFile(file);
-            }
-        });
-    }
-
-    function uploadModel(file) {
-        const formData = new FormData();
-        formData.append('model', file);
-
-        // Show loading state
-        modelUploadButton.disabled = true;
-        modelUploadButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Uploading...';
-
-        fetch('/upload-model', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                showError(data.error);
-            } else {
-                // Reload page to show X-ray upload interface
-                window.location.reload();
-            }
-        })
-        .catch(err => {
-            showError('Error uploading model file');
-            console.error('Error:', err);
-        })
-        .finally(() => {
-            modelUploadButton.disabled = false;
-            modelUploadButton.innerHTML = '<i data-feather="upload" class="me-2"></i>Upload Model File';
-            feather.replace();
-        });
-    }
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const fileSize = (file.size / 1024 / 1024).toFixed(2);
+            fileInfo.textContent = `Selected file: ${file.name} (${fileSize}MB)`;
+            uploadFile(file);
+        }
+    });
 
     function uploadFile(file) {
         const formData = new FormData();

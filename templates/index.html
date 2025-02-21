@@ -3,31 +3,6 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <!-- Model Upload Section -->
-        {% if not model_ready %}
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h3 class="card-title text-center mb-4">
-                    <i data-feather="upload-cloud" class="me-2"></i>
-                    Upload Model
-                </h3>
-
-                <div class="alert alert-info" role="alert">
-                    <i data-feather="info" class="me-2"></i>
-                    Please upload your trained model (.h5 file) for osteoporosis detection.
-                </div>
-
-                <form id="modelUploadForm" class="text-center">
-                    <input type="file" id="modelInput" accept=".h5" class="form-control" hidden>
-                    <button type="button" id="modelUploadButton" class="btn btn-primary">
-                        <i data-feather="upload" class="me-2"></i>
-                        Upload Model File
-                    </button>
-                </form>
-            </div>
-        </div>
-        {% endif %}
-
         <!-- X-Ray Upload Section -->
         <div class="card shadow-sm">
             <div class="card-body">
@@ -46,13 +21,10 @@
                          alt="Upload icon" class="upload-icon mb-3" width="64" height="64">
                     <form id="uploadForm" class="mb-3">
                         <input type="file" id="fileInput" class="form-control" accept=".jpg,.jpeg,.png" hidden>
-                        <button type="button" id="uploadButton" class="btn btn-primary btn-lg" {% if not model_ready %}disabled{% endif %}>
+                        <button type="button" id="uploadButton" class="btn btn-primary btn-lg">
                             <i data-feather="upload" class="me-2"></i>
                             Choose X-Ray Image
                         </button>
-                        {% if not model_ready %}
-                        <div class="text-muted mt-2">Please upload a model first</div>
-                        {% endif %}
                         <div id="fileInfo" class="mt-2 text-muted"></div>
                     </form>
                 </div>

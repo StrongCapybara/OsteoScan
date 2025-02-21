@@ -28,9 +28,7 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
-    # Check if model exists
-    model_exists = os.path.exists(os.path.join(MODEL_FOLDER, 'osteoporosis_model.h5'))
-    return render_template('index.html', model_ready=model_exists)
+    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -59,27 +57,6 @@ def upload_file():
     except Exception as e:
         logging.error(f"Error processing upload: {str(e)}")
         return jsonify({'error': 'Error processing upload'}), 500
-
-@app.route('/upload-model', methods=['POST'])
-def upload_model():
-    if 'model' not in request.files:
-        return jsonify({'error': 'No model file provided'}), 400
-
-    model_file = request.files['model']
-    if model_file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-
-    if not model_file.filename.endswith('.h5'):
-        return jsonify({'error': 'Invalid model file format. Please upload a .h5 file'}), 400
-
-    try:
-        filename = 'osteoporosis_model.h5'
-        filepath = os.path.join(MODEL_FOLDER, filename)
-        model_file.save(filepath)
-        return jsonify({'success': 'Model uploaded successfully'})
-    except Exception as e:
-        logging.error(f"Error uploading model: {str(e)}")
-        return jsonify({'error': 'Error uploading model'}), 500
 
 @app.errorhandler(413)
 def too_large(e):

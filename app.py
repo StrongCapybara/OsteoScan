@@ -20,6 +20,14 @@ MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
 for folder in [UPLOAD_FOLDER, MODEL_FOLDER]:
     if not os.path.exists(folder):
         os.makedirs(folder)
+        logging.info(f"Created directory: {folder}")
+
+# Log model file status
+model_path = os.path.join(MODEL_FOLDER, 'osteoporosis_model.h5')
+if os.path.exists(model_path):
+    logging.info("Model file found at: %s", model_path)
+else:
+    logging.warning("Model file not found. Please place 'osteoporosis_model.h5' in the 'model' directory")
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

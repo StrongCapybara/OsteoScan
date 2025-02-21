@@ -1,0 +1,30 @@
+.upload-container {
+    border: 2px dashed var(--bs-border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.upload-container:hover {
+    border-color: var(--bs-primary);
+}
+
+.upload-icon {
+    opacity: 0.7;
+}
+
+.result-card {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-border-color);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bs-dark);
+    border-top: 1px solid var(--bs-border-color);
+}
+
+main {
+    margin-bottom: 100px;
+}

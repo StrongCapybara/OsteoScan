@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">
+                    <i data-feather="activity" class="me-2"></i>
+                    Knee X-Ray Analysis
+                </h2>
+                
+                <div class="alert alert-info" role="alert">
+                    <i data-feather="info" class="me-2"></i>
+                    Upload a knee X-ray image for automatic osteoporosis screening.
+                </div>
+
+                <div class="upload-container text-center p-4 mb-4">
+                    <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" 
+                         alt="Upload icon" class="upload-icon mb-3" width="64" height="64">
+                    <form id="uploadForm" class="mb-3">
+                        <input type="file" id="fileInput" class="form-control" accept=".jpg,.jpeg,.png" hidden>
+                        <button type="button" id="uploadButton" class="btn btn-primary btn-lg">
+                            <i data-feather="upload" class="me-2"></i>
+                            Choose X-Ray Image
+                        </button>
+                        <div id="fileInfo" class="mt-2 text-muted"></div>
+                    </form>
+                </div>
+
+                <div id="loadingIndicator" class="text-center d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Analyzing...</span>
+                    </div>
+                    <p class="mt-2">Analyzing your X-ray...</p>
+                </div>
+
+                <div id="results" class="d-none">
+                    <h3 class="mb-3">Analysis Results</h3>
+                    <div class="result-card p-3 rounded">
+                        <div id="resultStatus" class="mb-3"></div>
+                        <div id="resultConfidence" class="mb-3"></div>
+                        <div id="resultRecommendation" class="mb-3"></div>
+                    </div>
+                </div>
+
+                <div id="error" class="alert alert-danger d-none" role="alert"></div>
+            </div>
+        </div>
+
+        <!-- Sample X-rays Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="card-title mb-3">Sample X-rays</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb" 
+                             class="img-fluid rounded" alt="Sample X-ray 1">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <img src="https://images.unsplash.com/photo-1516069677018-378515003435" 
+                             class="img-fluid rounded" alt="Sample X-ray 2">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <img src="https://images.unsplash.com/photo-1722096703718-a04f14ecde52" 
+                             class="img-fluid rounded" alt="Sample X-ray 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}

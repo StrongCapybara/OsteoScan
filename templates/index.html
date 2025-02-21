@@ -3,22 +3,21 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <!-- X-Ray Upload Section -->
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title text-center mb-4">
+        <div class="card shadow border-0 rounded-4">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4 d-flex align-items-center justify-content-center">
                     <i data-feather="activity" class="me-2"></i>
                     Knee X-Ray Analysis
                 </h2>
 
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-info border-0 rounded-3 shadow-sm" role="alert">
                     <i data-feather="info" class="me-2"></i>
                     Upload a knee X-ray image for automatic osteoporosis screening.
                 </div>
 
                 <form id="uploadForm" class="mb-3 text-center">
                     <input type="file" id="fileInput" class="form-control" accept=".jpg,.jpeg,.png" hidden>
-                    <button type="button" id="uploadButton" class="btn btn-primary btn-lg">
+                    <button type="button" id="uploadButton" class="btn btn-primary btn-lg rounded-3 shadow-sm hover-lift">
                         <i data-feather="upload" class="me-2"></i>
                         Choose X-Ray Image
                     </button>
@@ -34,35 +33,14 @@
 
                 <div id="results" class="d-none">
                     <h3 class="mb-3">Analysis Results</h3>
-                    <div class="result-card p-3 rounded">
+                    <div class="result-card p-4 rounded-3 shadow-sm border">
                         <div id="resultStatus" class="mb-3"></div>
                         <div id="resultConfidence" class="mb-3"></div>
                         <div id="resultRecommendation" class="mb-3"></div>
                     </div>
                 </div>
 
-                <div id="error" class="alert alert-danger d-none" role="alert"></div>
-            </div>
-        </div>
-
-        <!-- Sample X-rays Section -->
-        <div class="card mt-4">
-            <div class="card-body">
-                <h3 class="card-title mb-3">Sample X-rays</h3>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb" 
-                             class="img-fluid rounded" alt="Sample X-ray 1">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <img src="https://images.unsplash.com/photo-1516069677018-378515003435" 
-                             class="img-fluid rounded" alt="Sample X-ray 2">
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <img src="https://images.unsplash.com/photo-1722096703718-a04f14ecde52" 
-                             class="img-fluid rounded" alt="Sample X-ray 3">
-                    </div>
-                </div>
+                <div id="error" class="alert alert-danger rounded-3 shadow-sm d-none" role="alert"></div>
             </div>
         </div>
     </div>
